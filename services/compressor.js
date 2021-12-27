@@ -250,7 +250,7 @@ const compressNFTImage = async () => {
                 if (!body) {
                   console.log('gif image load failed');
                   nftItem.thumbnailPath = '.'
-                  nftItem.contentType = 'gif'
+                  //nftItem.contentType = 'gif'
                   await nftItem.save()
                   setTimeout(() => {
                     compressNFTImage()
@@ -265,14 +265,14 @@ const compressNFTImage = async () => {
                     })(body);
                     fs.writeFileSync(key, gifRes);
                     nftItem.thumbnailPath = `${fileName}.gif`
-                    nftItem.contentType = 'gif'
+                    //nftItem.contentType = 'gif'
                     await nftItem.save()
                   } catch (error) {
                     console.log('-----------------------');
                     console.log(error);
                     fs.writeFileSync(key, body);
                     nftItem.thumbnailPath = `${fileName}.gif`
-                    nftItem.contentType = 'gif'
+                    //nftItem.contentType = 'gif'
                     await nftItem.save()
                   }
                   setTimeout(() => {
@@ -292,7 +292,7 @@ const compressNFTImage = async () => {
           case 5:
             {
               nftItem.thumbnailPath = thumbnailInfo[1]
-              nftItem.contentType = 'video'
+              //nftItem.contentType = 'video'
               timeoutInterval = 2000
               await nftItem.save()
             }
@@ -300,14 +300,14 @@ const compressNFTImage = async () => {
           case 6:
             {
               nftItem.thumbnailPath = 'non-image'
-              nftItem.contentType = 'audio'
+              //nftItem.contentType = 'audio'
               await nftItem.save()
             }
             break
           // case image
           case 3:
             {
-              nftItem.contentType = 'image'
+              //nftItem.contentType = 'image'
               await nftItem.save()
               await uploadImageToInstance(
                 thumbnailInfo[1],
