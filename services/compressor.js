@@ -30,7 +30,7 @@ const uploadImageToInstance = async (body, extension, nftItem) => {
   }
 }
 
-const resizeBase64Image = async (source, limit = 200) => {
+const resizeBase64Image = async (source, limit = 320) => {
   try {
     if (source.startsWith('data:')) {
       source = source.split(',')[1]
@@ -182,7 +182,7 @@ const getThumbnailImageFromURL = async (imgPath) => {
     else if (type == 'audio') return [6, null]
     else if (type == 'video') {
       var opts = {
-        width: 200
+        width: 320
       };
       let fileName = generateFileName()
       let key = `thumb-image/${fileName}.gif`
@@ -261,7 +261,7 @@ const compressNFTImage = async () => {
                   let key = `thumb-image/${fileName}.gif`
                   try {
                     const gifRes = await gifResize({
-                      width: 200
+                      width: 320
                     })(body);
                     fs.writeFileSync(key, gifRes);
                     nftItem.thumbnailPath = `${fileName}.gif`
