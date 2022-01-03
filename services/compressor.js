@@ -221,13 +221,15 @@ const getThumbnailImageFromURL = async (imgPath) => {
 }
 
 const compressNFTImage = async () => {
+  console.log('Start compressing image...');
   let nftArr = await NFTITEM.find({
     thumbnailPath: '-',
   }).sort({_id: -1}).limit(1)
   if (nftArr && nftArr.length > 0) {
     let nftItem = nftArr[0];
     let tokenURI = nftItem.tokenURI
-  
+    console.log('NFTItem: '+nftItem);
+    console.log('TokenURI: '+tokenURI);
     let timeoutInterval = 1000;
     if (tokenURI && tokenURI.length > 0) {
       try {
