@@ -239,6 +239,13 @@ const compressNFTImage = async () => {
             data: JSON.parse(Buffer.from(tokenURI.substr(29), 'base64').toString())
           }
         } else {
+
+          // IPFS protocal case //
+          if (tokenURI.includes('ipfs://')) {
+            let uri = tokenURI.split('//')[1];
+            tokenURI = `https://openzoo.mypinata.cloud/ipfs/${uri}`;
+          }
+
           metadata = await axios.get(tokenURI, { timeout: 10000 })
         }
         let image = metadata.data.image || metadata.data.imageurl
