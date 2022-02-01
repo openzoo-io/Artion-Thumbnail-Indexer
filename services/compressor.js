@@ -242,7 +242,7 @@ const compressNFTImage = async () => {
 
           // IPFS protocal case //
           if (tokenURI.includes('ipfs://')) {
-            let uri = tokenURI.split('//')[1];
+            let uri = tokenURI.split('ipfs://')[1].replace(/([^:]\/)\/+/g, "$1");
             tokenURI = `https://openzoo.mypinata.cloud/ipfs/${uri}`;
           }
           console.log('TokenURI To Fetch',tokenURI)
@@ -252,7 +252,7 @@ const compressNFTImage = async () => {
 
         // IPFS protocal case //
         if (image.includes('ipfs://')) {
-          let uri = image.split('//')[1];
+          let uri = image.split('ipfs://')[1].replace(/([^:]\/)\/+/g, "$1");
           image = `https://openzoo.mypinata.cloud/ipfs/${uri}`;
         }
 
