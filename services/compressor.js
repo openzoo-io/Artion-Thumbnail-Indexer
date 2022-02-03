@@ -361,7 +361,7 @@ const compressNFTImage = async () => {
   } else {
     setTimeout(() => {
       compressNFTImage()
-    }, 1000)
+    }, 2000)
   }
 }
 
