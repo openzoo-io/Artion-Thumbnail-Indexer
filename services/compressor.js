@@ -245,6 +245,7 @@ const compressNFTImage = async () => {
             let uri = tokenURI.split('ipfs://')[1].replace(/([^:]\/)\/+/g, "$1");
             tokenURI = `https://openzoo.mypinata.cloud/ipfs/${uri}`;
           }
+          tokenURI = tokenURI.replace('gateway.pinata.cloud', 'openzoo.mypinata.cloud');
           console.log('TokenURI To Fetch',tokenURI)
           metadata = await axios.get(tokenURI, { timeout: 10000 })
         }
@@ -255,7 +256,7 @@ const compressNFTImage = async () => {
           let uri = image.split('ipfs://')[1].replace(/([^:]\/)\/+/g, "$1");
           image = `https://openzoo.mypinata.cloud/ipfs/${uri}`;
         }
-
+        image = image.replace('gateway.pinata.cloud', 'openzoo.mypinata.cloud');
         console.log('Image To Fetch',image)
 
         let thumbnailInfo = await getThumbnailImageFromURL(image)
